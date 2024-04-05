@@ -20,7 +20,6 @@ public class Main {
         downloadUnsplashNatureImages();
     }
 
-    public static void print
 
     public static void downloadUnsplashNatureImages(){
         WebDriver driver = new ChromeDriver();
