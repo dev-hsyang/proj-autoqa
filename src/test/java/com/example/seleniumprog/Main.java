@@ -17,14 +17,30 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        downloadUnsplashNatureImages();
+        //downloadUnsplashNatureImages();
+        printPpomppuLatestArticles();
     }
 
+    public static void printPpomppuLatestArticles(){
+        WebDriver driver = new ChromeDriver();
+        String url = "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard";
+        driver.get(url);
+
+        List<WebElement> latestArticles = driver.findElements(By.cssSelector("#revolution_main_table > tbody > tr:not(.baseNotice) > td:nth-child(3) > a"));
+
+        for(WebElement element : latestArticles){
+            String title = element.getText().trim();
+            System.out.println(title);
+        }
+
+        driver.quit();
+    }
 
     public static void downloadUnsplashNatureImages(){
         WebDriver driver = new ChromeDriver();
         String url = "https://unsplash.com/ko/t/nature";
         driver.get(url);
+
         List<WebElement> imgSelect = driver.findElements(By.cssSelector("[data-test=\"masonry-grid-count-three\"] img[data-test=\"photo-grid-masonry-img\"]"));
 
         for(WebElement element : imgSelect){
