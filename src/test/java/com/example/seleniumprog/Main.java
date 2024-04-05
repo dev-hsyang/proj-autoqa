@@ -22,11 +22,8 @@ public class Main {
 
         String url = "https://www.naver.com/";
         driver.get(url);
-
         List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(0));
-
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.get("https://unsplash.com/ko/t/nature");
         sleep(3000);
@@ -52,10 +49,8 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
-
-        //driver.quit();
+        driver.quit();
     }
 
     public static void sleep(long millis) {
