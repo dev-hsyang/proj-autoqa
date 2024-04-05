@@ -5,12 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         WebDriver driver = new ChromeDriver();
 
         String url = "https://www.naver.com/";
@@ -20,7 +27,6 @@ public class Main {
         driver.switchTo().window(tabs.get(0));
 
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
 
         driver.get("https://unsplash.com/ko/t/nature");
         sleep(3000);
@@ -34,9 +40,22 @@ public class Main {
         for(WebElement element : imgSelect){
             String src = element.getAttribute("src");
             System.out.println(src);
+
+            BufferedImage saveImage = null;
+            try {
+                saveImage = ImageIO.read(new URL(src));
+                if(saveImage != null){
+                    String fileName = src.substring(src.lastIndexOf("/") + 1);
+                    fileName = fileName.split("\\?")[0];
+                    ImageIO.write(saveImage, "jpg", new File("/Users/hyunseungy/Downloads/" + fileName + ".jpg"));
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
-        driver.quit();
+        //driver.quit();
     }
 
     public static void sleep(long millis) {
