@@ -18,8 +18,27 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         //downloadUnsplashNatureImages();
-        printPpomppuLatestArticles();
+        //printPpomppuLatestArticles();
+        blindBestTopics();
     }
+
+    public static void blindBestTopics(){
+        WebDriver driver = new ChromeDriver();
+        String url = "https://www.teamblind.com/kr/";
+        driver.get(url);
+
+        List<WebElement> bestTopics = driver.findElements(By.cssSelector("#wrap > section > div > div.contents > div.home-list > div.topic-list.best > div.article"));
+
+        for(WebElement element : bestTopics){
+            String category = element.findElement(By.className("topic")).getText().trim();
+            String title = element.findElement(By.className("tit")).getText().trim();
+            BlindBestTopicDto blindBestTopicDto = new BlindBestTopicDto(category, title);
+            System.out.println(blindBestTopicDto);
+        }
+
+        driver.quit();
+    }
+
 
     public static void printPpomppuLatestArticles(){
         WebDriver driver = new ChromeDriver();
