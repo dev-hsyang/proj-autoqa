@@ -32,16 +32,18 @@ public class Main {
         for(WebElement element : bestTopics){
             String category = element.findElement(By.className("topic")).getText().trim();
             String title = element.findElement(By.className("tit")).getText().trim();
-            String likes = element.findElement(By.cssSelector("div> a.like")).getText().trim();
-            String comments = element.findElement(By.cssSelector("div > a.cmt")).getText().trim();
+            String likes = element.findElement(By.cssSelector("div.wrap-info > a.like")).getText().trim();
+            String comments = element.findElement(By.cssSelector("div.wrap-info > a.cmt")).getText().trim();
             int numOfLikes = Integer.parseInt(likes.split("\n")[1]);
             int numOfCmnts = Integer.parseInt(comments.split("\n")[1]);
-            BlindBestTopicDto blindBestTopicDto = new BlindBestTopicDto(category, title,numOfLikes, numOfCmnts);
+
+            BlindBestTopicDto blindBestTopicDto = new BlindBestTopicDto(category, title, numOfLikes, numOfCmnts);
             System.out.println(blindBestTopicDto);
         }
 
-        driver.quit();
+        //driver.quit();
     }
+
     public static void printPpomppuLatestArticles(){
         WebDriver driver = new ChromeDriver();
         String url = "https://www.ppomppu.co.kr/zboard/zboard.php?id=freeboard";
@@ -92,4 +94,3 @@ public class Main {
         }
     }
 }
-
