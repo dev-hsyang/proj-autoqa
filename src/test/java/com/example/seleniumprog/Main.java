@@ -19,7 +19,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //downloadUnsplashNatureImages();
         //printPpomppuLatestArticles();
-        blindBestTopics();
+        //blindBestTopics();
+
+        Blind blindTest = new Blind();
+        blindTest.blindBestTopics();
     }
 
     public static void blindBestTopics(){
