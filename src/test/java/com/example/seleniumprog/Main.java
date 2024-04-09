@@ -21,8 +21,7 @@ public class Main {
         //printPpomppuLatestArticles();
         //blindBestTopics();
 
-        Blind blindTest = new Blind();
-        blindTest.blindBestTopics();
+        Blind.blindBestTopics();
     }
 
     public static void blindBestTopics(){

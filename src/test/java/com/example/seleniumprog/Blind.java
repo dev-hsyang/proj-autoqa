@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Blind {
 
-    public void blindBestTopics(){
+    public static void blindBestTopics(){
         WebDriver driver = new ChromeDriver();
         String url = "https://www.teamblind.com/kr/";
         driver.get(url);
