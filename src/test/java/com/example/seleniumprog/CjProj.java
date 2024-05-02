@@ -42,11 +42,11 @@ public class CjProj {
 
         WebElement text_box_id = driver.findElement(By.cssSelector("#loginForm1 > div.login-form > form > fieldset.login > span.input-text.lg > input"));
         text_box_id.clear();
-        text_box_id.sendKeys("-");
+        text_box_id.sendKeys("didgsutmd1");
 
         WebElement text_box_pw = driver.findElement(By.cssSelector("#loginForm1 > div.login-form > form > fieldset.login > span.input-password.lg > input"));
         text_box_pw.clear();
-        text_box_pw.sendKeys("-");
+        text_box_pw.sendKeys("dolphin7530!");
 
         WebElement btn_login = driver.findElement(By.cssSelector("#loginBtn > span"));
         btn_login.click();
